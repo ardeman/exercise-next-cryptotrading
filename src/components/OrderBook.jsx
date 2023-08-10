@@ -31,7 +31,7 @@ const OrderBook = () => {
       const data = JSON.parse(message.data);
 
       // If authenticated, request orderbook data
-      if (data.result && data.result.client) {
+      if (data.result.client) {
         const orderBookRequest = {
           method: 1,
           params: {
