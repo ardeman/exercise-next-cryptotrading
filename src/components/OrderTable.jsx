@@ -17,7 +17,7 @@ const OrderTable = (props) => {
       <table className="w-full text-sm text-left text-gray-500 table-auto">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
-            <th scope="col" className="px-2 py-3">Harga</th>
+            <th scope="col" className="px-2 py-3">Price</th>
             <th scope="col" className="px-2 py-3">BTC</th>
             <th scope="col" className="px-2 py-3">IDR</th>
           </tr>

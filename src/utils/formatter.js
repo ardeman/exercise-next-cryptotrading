@@ -6,5 +6,5 @@ export const currencyFormatter = (amount, options) => {
     };
   }
 
-  return amount?.toLocaleString("id-ID", options);
+  return amount?.toLocaleString("en-US", options);
 };
