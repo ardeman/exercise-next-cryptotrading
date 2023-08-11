@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { useEffect } from 'react';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
@@ -73,9 +72,9 @@ const CandlestickChart = (props) => {
   const newChartData = calculateOHLC(convertArray(flattenedData, interval))
 
   const series = [{
-    data: newChartData.map(item => ({
+    data: newChartData.map((item, index) => ({
       x: new Date(item.epoch * 1000).getTime(),
-      y: [parseFloat(item.open), parseFloat(item.high), parseFloat(item.low), parseFloat(item.close)],
+      y: [parseFloat(index > 0 ? newChartData[index-1].close : item.open), parseFloat(item.high), parseFloat(item.low), parseFloat(item.close)],
     })),
   }];
 
@@ -86,11 +85,12 @@ const CandlestickChart = (props) => {
     xaxis: {
       type: 'datetime',
     },
+    yaxis: {
+      tooltip: {
+        enabled: true,
+      },
+    }
   };
-
-  useEffect(() => {
-    console.log("chartData", chartData)
-  }, [chartData])
 
   return (
     <Chart options={options} series={series} type="candlestick" height={400} width={1000} />
