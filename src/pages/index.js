@@ -73,8 +73,7 @@ export default function Home() {
 
       if (data.result.channel === chartChannel) {
         const newChartData = data.result.data;
-        const tempData = [...chartData, newChartData]
-        setChartData(tempData)
+        setChartData(prevChartData => [...prevChartData, newChartData])
       }
     };
 
